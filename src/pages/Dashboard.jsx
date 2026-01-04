@@ -1,6 +1,15 @@
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import Navbar from "../components/Navbar";
 
 function Dashboard() {
+  const [stats, setStats] = useState({});
+
+  useEffect(() => {
+    api.get("dashboard/")
+      .then(res => setStats(res.data));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -9,13 +18,13 @@ function Dashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 shadow rounded">
-            Total Rooms: 20
+            Total Rooms: {stats.total_rooms}
           </div>
           <div className="bg-white p-6 shadow rounded">
-            Booked Rooms: 8
+            Booked Rooms: {stats.booked_rooms}
           </div>
           <div className="bg-white p-6 shadow rounded">
-            Available Rooms: 12
+            Available Rooms: {stats.available_rooms}
           </div>
         </div>
       </div>
