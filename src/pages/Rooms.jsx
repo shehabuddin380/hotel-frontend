@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import RoomCard from "../components/RoomCard";
 
+function Rooms() {
 const Rooms = () => {
   return (
     <div className="px-16 py-16">
@@ -28,5 +31,22 @@ const Rooms = () => {
     </div>
   );
 };
+
+  const rooms = [
+    { id: 1, name: "Deluxe Room", price: 3500 },
+    { id: 2, name: "Premium Room", price: 5000 },
+  ];
+
+  return (
+    <>
+      <Navbar />
+      <div className="p-10 grid md:grid-cols-3 gap-6">
+        {rooms.map(room => (
+          <RoomCard key={room.id} room={room} />
+        ))}
+      </div>
+    </>
+  );
+}
 
 export default Rooms;

@@ -1,4 +1,8 @@
-function RoomCard() {
+import { useNavigate } from "react-router-dom";
+
+function RoomCard({ id }) {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition">
       <img
@@ -11,9 +15,16 @@ function RoomCard() {
         <p className="text-gray-500 mb-4">
           Luxury room with modern facilities
         </p>
+
         <div className="flex justify-between items-center">
-          <span className="text-indigo-600 font-bold">৳3500 / night</span>
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded">
+          <span className="text-indigo-600 font-bold">
+            ৳3500 / night
+          </span>
+
+          <button
+            onClick={() => navigate(`/buy/${id}`)}
+            className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+          >
             Buy Now
           </button>
         </div>

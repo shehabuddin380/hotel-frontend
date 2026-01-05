@@ -1,18 +1,19 @@
 const Hero = () => {
   return (
-    <section className="bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945')] bg-cover bg-center h-[90vh] flex items-center">
-      <div className="bg-black/60 w-full h-full flex items-center px-16">
-        <div className="text-white max-w-xl">
-          <h1 className="text-5xl font-bold mb-4">
-            Luxury Hotel Booking
-          </h1>
-          <p className="mb-6 text-lg">
-            Book your perfect stay with comfort & luxury
-          </p>
-          <button className="bg-yellow-400 text-black px-6 py-3 rounded shadow hover:bg-yellow-500">
-            Explore Rooms
-          </button>
-        </div>
+    <section className="h-[90vh] bg-[url('https://images.unsplash.com/photo-1501117716987-c8e1ecb210c3')] bg-cover bg-center flex items-center justify-center text-white">
+      <div className="bg-black/60 p-10 rounded text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Experience Luxury Stay
+        </h1>
+        <p className="mb-6">
+          Book premium rooms at affordable prices
+        </p>
+        <a
+          href="/rooms"
+          className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold"
+        >
+          Explore Rooms
+        </a>
       </div>
     </section>
   );

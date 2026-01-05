@@ -6,6 +6,8 @@ import Buy from "./pages/Buy";
 import Success from "./pages/Success";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import Fail from "./pages/File";
+
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
       <Route path="/rooms" element={<Rooms />} />
       <Route path="/buy/:id" element={<Buy />} />
       <Route path="/success" element={<Success />} />
-
-      {/* Protected Dashboard Route */}
+      <Route path="/fail" element={<Fail />} />
+      {/* Protected Dashboard */}
       <Route
         path="/dashboard"
         element={
