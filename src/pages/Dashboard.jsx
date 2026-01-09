@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import Navbar from "../components/Navbar";
 
-function Dashboard() {
+const Dashboard = () => {
   const [stats, setStats] = useState({
     total_rooms: 0,
     booked_rooms: 0,
     available_rooms: 0,
   });
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -28,15 +29,21 @@ function Dashboard() {
     <>
       <Navbar />
 
-      <div className="p-8 bg-gray-100 min-h-screen">
-        <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
+      <div className="min-h-screen bg-gray-100 p-10">
+        <h1 className="text-3xl font-bold mb-8">
+          Dashboard
+        </h1>
 
         {loading && (
-          <p className="text-gray-600">Loading dashboard...</p>
+          <p className="text-gray-600">
+            Loading dashboard...
+          </p>
         )}
 
         {error && (
-          <p className="text-red-600">{error}</p>
+          <p className="text-red-600">
+            {error}
+          </p>
         )}
 
         {!loading && !error && (
@@ -75,6 +82,6 @@ function Dashboard() {
       </div>
     </>
   );
-}
+};
 
 export default Dashboard;
