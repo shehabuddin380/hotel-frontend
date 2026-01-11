@@ -1,5 +1,5 @@
 import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 
 const Login = () => {
@@ -10,18 +10,22 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
-    try {
-      const res = await api.post("login/", {
-        username: e.target.username.value,
-        password: e.target.password.value,
-      });
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+    const remember = e.target.remember.checked;
 
-      // JWT access token save
-      localStorage.setItem("token", res.data.access);
+    try {
+      const res = await api.post("login/", { username, password });
+
+      // Save JWT token
+      if (remember) {
+        localStorage.setItem("token", res.data.access);
+      } else {
+        sessionStorage.setItem("token", res.data.access);
+      }
 
       navigate("/dashboard");
-    } catch (err) {
-      console.error(err.response?.data || err.message);
+    } catch {
       setError("Invalid username or password");
     }
   };
@@ -32,7 +36,7 @@ const Login = () => {
         onSubmit={handleLogin}
         className="bg-white p-8 shadow-lg rounded w-[350px]"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-5 text-center">Login</h2>
 
         {error && (
           <p className="mb-4 text-center text-red-600 font-medium">
@@ -51,16 +55,26 @@ const Login = () => {
           name="password"
           type="password"
           placeholder="Password"
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-3 p-2 border rounded"
           required
         />
 
-        <button
-          type="submit"
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
-        >
+        {/* Remember Me */}
+        <label className="flex items-center gap-2 mb-4 text-sm">
+          <input type="checkbox" name="remember" />
+          Remember Me
+        </label>
+
+        <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
           Login
         </button>
+
+        <p className="text-sm mt-3 text-center">
+          No account?{" "}
+          <Link to="/signup" className="text-blue-600 hover:underline">
+            Sign Up
+          </Link>
+        </p>
       </form>
     </div>
   );

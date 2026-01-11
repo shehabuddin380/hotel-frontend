@@ -1,10 +1,13 @@
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
+  // Check token from both storages
+  const token =
+    localStorage.getItem("token") || sessionStorage.getItem("token");
 
+  // If no token → redirect to login
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
