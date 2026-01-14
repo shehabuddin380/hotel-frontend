@@ -5,28 +5,38 @@ import { useState } from "react";
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     const username = e.target.username.value;
     const password = e.target.password.value;
     const remember = e.target.remember.checked;
 
     try {
+      // Backend returns -> { message: "...", token: "xxxx" }
       const res = await api.post("login/", { username, password });
 
-      // Save JWT token
+      const token = res.data.token; // ✅ Correct field
+
+      // Save token
       if (remember) {
-        localStorage.setItem("token", res.data.access);
+        localStorage.setItem("token", token);
       } else {
-        sessionStorage.setItem("token", res.data.access);
+        sessionStorage.setItem("token", token);
       }
 
       navigate("/dashboard");
-    } catch {
+
+    } catch (err) {
+      console.log(err)
       setError("Invalid username or password");
+
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,14 +69,17 @@ const Login = () => {
           required
         />
 
-        {/* Remember Me */}
         <label className="flex items-center gap-2 mb-4 text-sm">
           <input type="checkbox" name="remember" />
           Remember Me
         </label>
 
-        <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
-          Login
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:bg-gray-500"
+        >
+          {loading ? "Logging in..." : "Login"}
         </button>
 
         <p className="text-sm mt-3 text-center">
