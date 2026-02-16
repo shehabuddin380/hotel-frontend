@@ -17,10 +17,9 @@ const Login = () => {
     const remember = e.target.remember.checked;
 
     try {
-      // Backend returns -> { message: "...", token: "xxxx" }
-      const res = await api.post("login/", { username, password });
+      const res = await api.post("users/login/", { username, password });
 
-      const token = res.data.token; // ✅ Correct field
+      const token = res.data.token; 
 
       // Save token
       if (remember) {
@@ -30,11 +29,8 @@ const Login = () => {
       }
 
       navigate("/dashboard");
-
-    } catch (err) {
-      console.log(err)
+    } catch {
       setError("Invalid username or password");
-
     } finally {
       setLoading(false);
     }
@@ -86,6 +82,13 @@ const Login = () => {
           No account?{" "}
           <Link to="/signup" className="text-blue-600 hover:underline">
             Sign Up
+          </Link>
+        </p>
+
+        <p className="text-sm mt-2 text-center">
+          Forgot password?{" "}
+          <Link to="/forgot" className="text-blue-600 hover:underline">
+            Reset
           </Link>
         </p>
       </form>

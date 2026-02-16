@@ -3,18 +3,18 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  // Token from localStorage OR sessionStorage
+  // Directly read token
   const token =
     localStorage.getItem("token") || sessionStorage.getItem("token");
 
-  // Logout Function
+  // Logout
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    sessionStorage.removeItem("token");
+    localStorage.clear();
+    sessionStorage.clear();
     navigate("/login");
   };
 
-  // Active link style function
+  // Active link style
   const navStyle = ({ isActive }) =>
     `hover:text-yellow-400 transition ${
       isActive ? "text-yellow-400 font-semibold" : ""
@@ -30,7 +30,6 @@ const Navbar = () => {
 
       {/* Menu */}
       <ul className="flex gap-8 items-center">
-
         <li>
           <NavLink to="/" className={navStyle}>
             Home
@@ -43,7 +42,6 @@ const Navbar = () => {
           </NavLink>
         </li>
 
-        {/* Dashboard only when logged in */}
         {token && (
           <li>
             <NavLink to="/dashboard" className={navStyle}>
@@ -52,7 +50,6 @@ const Navbar = () => {
           </li>
         )}
 
-        {/* Login / Signup OR Logout */}
         {!token ? (
           <>
             <li>

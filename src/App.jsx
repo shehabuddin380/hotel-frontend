@@ -9,9 +9,11 @@ import Fail from "./pages/Fail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
+import ActivateAccount from "./pages/ActivateAccount";
 
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -23,11 +25,18 @@ function App() {
       <Route path="/success" element={<Success />} />
       <Route path="/fail" element={<Fail />} />
 
+      {/* Auth Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot" element={<ForgotPassword />} />
 
-      {/* Protected Routes */}
+      {/* Account Activation */}
+      <Route
+        path="/activate/:uid/:token"
+        element={<ActivateAccount />}
+      />
+
+      {/* Protected Dashboard */}
       <Route
         path="/dashboard"
         element={
@@ -36,6 +45,9 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      {/* 404 Page */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

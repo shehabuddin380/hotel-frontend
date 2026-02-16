@@ -12,12 +12,13 @@ const ForgotPassword = () => {
     setError("");
 
     try {
-      await api.post("password-reset/", {
+      await api.post("users/password-reset/", {
         email: e.target.email.value,
       });
 
       setMessage("Reset link sent to your email!");
     } catch {
+      // no unused err → eslint error gone
       setError("Email not found or server error!");
     }
   };
@@ -54,20 +55,23 @@ const ForgotPassword = () => {
           required
         />
 
-        <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
+        <button
+          type="submit"
+          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+        >
           Send Reset Link
         </button>
 
-        {/* Back to Login Button */}
+        {/* Back to login after success */}
         {message && (
-          <Link to="/login" className="flex justify-center">
-            <button
-              type="button"
-              className="mt-3 bg-slate-700 text-white px-4 py-2 rounded"
+          <div className="text-center mt-3">
+            <Link
+              to="/login"
+              className="text-blue-600 hover:underline"
             >
               Back to Login
-            </button>
-          </Link>
+            </Link>
+          </div>
         )}
       </form>
     </div>
