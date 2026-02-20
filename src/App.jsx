@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
@@ -18,36 +19,38 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<Home />} />
-      <Route path="/rooms" element={<Rooms />} />
-      <Route path="/buy/:id" element={<Buy />} />
-      <Route path="/success" element={<Success />} />
-      <Route path="/fail" element={<Fail />} />
+      <Route element={<Layout />}>
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/rooms" element={<Rooms />} />
+        <Route path="/buy/:id" element={<Buy />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/fail" element={<Fail />} />
 
-      {/* Auth Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot" element={<ForgotPassword />} />
+        {/* Auth Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
 
-      {/* Account Activation */}
-      <Route
-        path="/activate/:uid/:token"
-        element={<ActivateAccount />}
-      />
+        {/* Account Activation */}
+        <Route
+          path="/activate/:uid/:token"
+          element={<ActivateAccount />}
+        />
 
-      {/* Protected Dashboard */}
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
+        {/* Protected Dashboard */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* 404 Page */}
-      <Route path="*" element={<NotFound />} />
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   );
 }
