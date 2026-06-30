@@ -5,7 +5,6 @@ import FeaturedHotels from "../components/FeaturedHotels";
 function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <section className="py-16 px-6 md:px-20 text-center">
         <h2 className="text-3xl font-bold mb-4">About Us</h2>
@@ -14,9 +13,9 @@ function Home() {
           premium rooms, affordable prices, and excellent customer service.
         </p>
       </section>
- 
-      <FeaturedHotels /> 
-      
+
+      <FeaturedHotels />
+
       <section className="py-16 bg-gray-100 px-6 md:px-20">
         <h2 className="text-3xl font-bold text-center mb-10">
           Why Choose Us
@@ -39,11 +38,9 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="py-16 text-center">
-        <h2 className="text-2xl font-bold mb-4">
-          Ready to Book Your Stay?
-        </h2>
 
+      <section className="py-16 text-center">
+        <h2 className="text-2xl font-bold mb-4">Ready to Book Your Stay?</h2>
         <a
           href="/rooms"
           className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition"
