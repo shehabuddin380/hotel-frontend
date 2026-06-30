@@ -18,39 +18,48 @@ const Buy = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 shadow rounded w-[400px]"
+        className="bg-white p-8 md:p-12 rounded-xl shadow-lg w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-6">
-          Booking Room #{id}
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+          Complete Your Booking
         </h2>
 
-        <input
-          name="name"
-          placeholder="Full Name"
-          className="w-full mb-3 p-2 border rounded"
-          required
-        />
+        <p className="text-sm text-gray-500 mb-6 text-center">
+          Booking ID: <span className="font-semibold">{id}</span>
+        </p>
 
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          className="w-full mb-3 p-2 border rounded"
-          required
-        />
+        <div className="space-y-4">
+          <input
+            name="name"
+            placeholder="Full Name"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
 
-        <input
-          name="address"
-          placeholder="Address"
-          className="w-full mb-3 p-2 border rounded"
-          required
-        />
+          <input
+            name="phone"
+            placeholder="Phone Number"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
 
-        <button className="w-full bg-black text-white py-2 rounded">
-          Proceed to Payment
-        </button>
+          <textarea
+            name="address"
+            placeholder="Address"
+            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition font-semibold"
+          >
+            Proceed to Payment
+          </button>
+        </div>
       </form>
     </div>
   );

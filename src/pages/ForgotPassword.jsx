@@ -32,8 +32,7 @@ const ForgotPassword = () => {
         <h2 className="text-xl font-bold mb-4 text-center">
           Reset Password
         </h2>
-
-        {/* Success Message */}
+ 
         {message && (
           <p className="mb-3 text-green-600 text-center">
             {message}
