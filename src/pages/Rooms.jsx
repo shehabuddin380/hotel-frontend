@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios"; // Axios instance
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import RoomCard from "../components/RoomCard";
 
 const Rooms = () => {
