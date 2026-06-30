@@ -12,22 +12,33 @@ const Signup = () => {
     setMessage("");
     setError("");
 
+    const password = e.target.password.value;
+    const password2 = e.target.password2.value;
+
     try {
       await api.post("users/register/", {
-        username: e.target.username.value,
+        first_name: e.target.first_name.value,
+        last_name: e.target.last_name.value,
         email: e.target.email.value,
-        password: e.target.password.value,
+        password: password,
+        password2: password2,
       });
 
       setMessage("Account created! Please check your email to activate account.");
 
-      // Optional: Auto redirect after 3 sec
       setTimeout(() => {
         navigate("/login");
       }, 3000);
 
-    } catch  {
-      setError("Signup failed! Username or Email already exists.");
+    } catch (err) {
+      const data = err.response?.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        const firstMsg = Array.isArray(data[firstKey]) ? data[firstKey][0] : data[firstKey];
+        setError(`${firstKey}: ${firstMsg}`);
+      } else {
+        setError("Signup failed! Something went wrong.");
+      }
     }
   };
 
@@ -39,23 +50,24 @@ const Signup = () => {
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
 
-        {/* Success Message */}
         {message && (
-          <p className="text-green-600 text-center mb-3">
-            {message}
-          </p>
+          <p className="text-green-600 text-center mb-3">{message}</p>
         )}
 
-        {/* Error Message */}
         {error && (
-          <p className="text-red-600 text-center mb-3">
-            {error}
-          </p>
+          <p className="text-red-600 text-center mb-3">{error}</p>
         )}
 
         <input
-          name="username"
-          placeholder="Username"
+          name="first_name"
+          placeholder="First Name"
+          className="w-full mb-3 p-2 border rounded"
+          required
+        />
+
+        <input
+          name="last_name"
+          placeholder="Last Name"
           className="w-full mb-3 p-2 border rounded"
           required
         />
@@ -72,6 +84,14 @@ const Signup = () => {
           name="password"
           type="password"
           placeholder="Password"
+          className="w-full mb-3 p-2 border rounded"
+          required
+        />
+
+        <input
+          name="password2"
+          type="password"
+          placeholder="Confirm Password"
           className="w-full mb-4 p-2 border rounded"
           required
         />
