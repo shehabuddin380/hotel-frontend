@@ -12,25 +12,34 @@ const Login = () => {
     setError("");
     setLoading(true);
 
-    const username = e.target.username.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
     const remember = e.target.remember.checked;
 
     try {
-      const res = await api.post("users/login/", { username, password });
+      const res = await api.post("users/login/", { email, password });
 
-      const token = res.data.token; 
+      const token = res.data.access || res.data.token;
+      const refresh = res.data.refresh;
 
-      // Save token
       if (remember) {
         localStorage.setItem("token", token);
+        if (refresh) localStorage.setItem("refresh", refresh);
       } else {
         sessionStorage.setItem("token", token);
+        if (refresh) sessionStorage.setItem("refresh", refresh);
       }
 
       navigate("/dashboard");
-    } catch {
-      setError("Invalid username or password");
+    } catch (err) {
+      const data = err.response?.data;
+      if (data) {
+        const firstKey = Object.keys(data)[0];
+        const firstMsg = Array.isArray(data[firstKey]) ? data[firstKey][0] : data[firstKey];
+        setError(`${firstMsg}`);
+      } else {
+        setError("Invalid email or password");
+      }
     } finally {
       setLoading(false);
     }
@@ -51,8 +60,9 @@ const Login = () => {
         )}
 
         <input
-          name="username"
-          placeholder="Username"
+          name="email"
+          type="email"
+          placeholder="Email"
           className="w-full mb-3 p-2 border rounded"
           required
         />
