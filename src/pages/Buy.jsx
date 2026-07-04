@@ -7,7 +7,7 @@ const Buy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await api.post("payment/payment/", {
+    const res = await api.post("payments/payment/", {
       room_id: id,
       name: e.target.name.value,
       phone: e.target.phone.value,
