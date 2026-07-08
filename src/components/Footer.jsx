@@ -10,6 +10,32 @@ const Footer = () => {
           </p>
         </div>
 
+        <div>
+          <h4 className="font-semibold mb-3">Quick Links</h4>
+          <ul className="space-y-2 text-sm text-slate-400">
+            <li>
+              <a href="/" className="hover:text-yellow-400 transition">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/rooms" className="hover:text-yellow-400 transition">
+                Rooms
+              </a>
+            </li>
+            <li>
+              <a href="/login" className="hover:text-yellow-400 transition">
+                Login
+              </a>
+            </li>
+            <li>
+              <a href="/signup" className="hover:text-yellow-400 transition">
+                Signup
+              </a>
+            </li>
+          </ul>
+        </div>
+
 
       </div>
 
