@@ -36,10 +36,19 @@ const Footer = () => {
           </ul>
         </div>
 
-
+        <div>
+          <h4 className="font-semibold mb-3">Contact</h4>
+          <ul className="space-y-2 text-sm text-slate-400">
+            <li>Dhaka, Bangladesh</li>
+            <li>support@hotellux.com</li>
+            <li>+880 1XXX-XXXXXX</li>
+          </ul>
+        </div>
       </div>
 
-
+      <div className="border-t border-white/10 py-4 text-center text-sm text-slate-500">
+        © 2025 HotelLux. All Rights Reserved.
+      </div>
     </footer>
   );
 };
