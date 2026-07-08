@@ -85,7 +85,15 @@ const hotels = [
 
 const FeaturedHotels = () => {
   return (
-  
+    <section className="py-16 bg-slate-950">
+      <h2 className="text-3xl font-bold text-center mb-2 text-white">
+        Featured Hotels
+      </h2>
+      <p className="text-slate-400 text-center mb-10">
+        Handpicked stays across Bangladesh's best destinations
+      </p>
+
+      
     </section>
   );
 };
