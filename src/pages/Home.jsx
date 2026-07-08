@@ -12,11 +12,11 @@ function Home() {
 
       <FeaturedHotels />
 
-      <section className="py-16 text-center">
+      <section className="py-16 text-center bg-slate-950 text-white">
         <h2 className="text-2xl font-bold mb-4">Ready to Book Your Stay?</h2>
         <a
           href="/rooms"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition"
+          className="inline-block bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-semibold px-8 py-3 rounded-lg transition"
         >
           Book Now
         </a>
