@@ -93,7 +93,34 @@ const FeaturedHotels = () => {
         Handpicked stays across Bangladesh's best destinations
       </p>
 
-      
+      <div className="grid md:grid-cols-3 gap-8 px-6 md:px-20">
+        {hotels.map((hotel) => (
+          <div
+            key={hotel.id}
+            className="bg-slate-900 border border-white/10 rounded-xl overflow-hidden hover:border-yellow-400/50 transition duration-300"
+          >
+            <img
+              src={hotel.image}
+              alt={hotel.name}
+              className="h-56 w-full object-cover"
+            />
+
+            <div className="p-5">
+              <h3 className="text-xl font-semibold mb-2 text-white">
+                {hotel.name}
+              </h3>
+              <p className="text-slate-400 mb-2">📍 {hotel.location}</p>
+              <p className="text-yellow-400 font-bold mb-4">{hotel.price}</p>
+
+              <Link to={`/buy/${hotel.id}`}>
+                <button className="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-900 py-2 rounded-lg transition font-semibold">
+                  Buy Now
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
