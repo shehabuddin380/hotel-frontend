@@ -46,15 +46,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex justify-center items-center bg-slate-950 px-4">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-8 shadow-lg rounded w-[350px]"
+        className="bg-slate-900 border border-white/10 p-8 shadow-lg rounded-xl w-[350px] text-white"
       >
-        <h2 className="text-2xl font-bold mb-5 text-center">Login</h2>
+        <h2 className="text-2xl font-bold mb-5 text-center">
+          Welcome Back
+        </h2>
 
         {error && (
-          <p className="mb-4 text-center text-red-600 font-medium">
+          <p className="mb-4 text-center text-red-400 text-sm font-medium">
             {error}
           </p>
         )}
@@ -63,7 +65,7 @@ const Login = () => {
           name="email"
           type="email"
           placeholder="Email"
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 p-2 rounded-lg bg-slate-800 border border-white/10 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           required
         />
 
@@ -71,11 +73,11 @@ const Login = () => {
           name="password"
           type="password"
           placeholder="Password"
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 p-2 rounded-lg bg-slate-800 border border-white/10 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           required
         />
 
-        <label className="flex items-center gap-2 mb-4 text-sm">
+        <label className="flex items-center gap-2 mb-4 text-sm text-slate-300">
           <input type="checkbox" name="remember" />
           Remember Me
         </label>
@@ -83,21 +85,21 @@ const Login = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 disabled:bg-gray-500"
+          className="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-semibold py-2 rounded-lg transition disabled:bg-slate-600 disabled:text-slate-300"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <p className="text-sm mt-3 text-center">
+        <p className="text-sm mt-3 text-center text-slate-400">
           No account?{" "}
-          <Link to="/signup" className="text-blue-600 hover:underline">
+          <Link to="/signup" className="text-yellow-400 hover:underline">
             Sign Up
           </Link>
         </p>
 
-        <p className="text-sm mt-2 text-center">
+        <p className="text-sm mt-2 text-center text-slate-400">
           Forgot password?{" "}
-          <Link to="/forgot" className="text-blue-600 hover:underline">
+          <Link to="/forgot" className="text-yellow-400 hover:underline">
             Reset
           </Link>
         </p>
