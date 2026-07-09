@@ -23,25 +23,23 @@ const ActivateAccount = () => {
   }, [uid, token]);
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="bg-white p-8 shadow rounded text-center w-[350px]">
-        
-        {/* Success Message */}
+    <div className="min-h-screen flex justify-center items-center bg-slate-950 px-4">
+      <div className="bg-slate-900 border border-white/10 p-8 shadow-lg rounded-xl text-center w-[350px] text-white">
+
         {message && (
-          <p className="text-green-600 font-medium">
+          <p className="text-green-400 font-medium">
             {message}
           </p>
         )}
 
-        {/* Error Message */}
         {error && (
-          <p className="text-red-600 font-medium">
+          <p className="text-red-400 font-medium">
             {error}
           </p>
         )}
 
         <Link to="/login">
-          <button className="mt-5 bg-black text-white px-4 py-2 rounded">
+          <button className="mt-5 bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-semibold px-4 py-2 rounded-lg transition">
             Go to Login
           </button>
         </Link>
