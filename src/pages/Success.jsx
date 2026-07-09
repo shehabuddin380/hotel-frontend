@@ -2,23 +2,24 @@ import { Link } from "react-router-dom";
 
 const Success = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-green-100 px-4">
-      
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-700 text-center">
-        Payment Successful! 🎉
-      </h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 px-4 text-white">
 
-      <p className="text-gray-700 text-center max-w-md mb-6">
-        Thank you for booking with us. Your room has been confirmed. Enjoy your stay!
-      </p>
+      <div className="bg-slate-900 border border-green-400/30 rounded-xl p-10 text-center max-w-md">
+        <h1 className="text-4xl font-bold mb-4 text-green-400">
+          Payment Successful! 🎉
+        </h1>
 
-      <Link
-        to="/"
-        className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
-      >
-        Back to Home
-      </Link>
+        <p className="text-slate-300 mb-6">
+          Thank you for booking with us. Your room has been confirmed. Enjoy your stay!
+        </p>
 
+        <Link
+          to="/"
+          className="inline-block bg-yellow-400 hover:bg-yellow-300 text-slate-900 px-6 py-3 rounded-lg font-semibold transition"
+        >
+          Back to Home
+        </Link>
+      </div>
     </div>
   );
 };
