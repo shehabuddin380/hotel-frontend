@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
+import RoomDetails from "./pages/RoomDetails";
 import Buy from "./pages/Buy";
 import Success from "./pages/Success";
 import Fail from "./pages/Fail";
@@ -23,6 +24,7 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/rooms" element={<Rooms />} />
+        <Route path="/rooms/:id" element={<RoomDetails />} />
         <Route path="/buy/:id" element={<Buy />} />
         <Route path="/success" element={<Success />} />
         <Route path="/fail" element={<Fail />} />
