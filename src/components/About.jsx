@@ -50,18 +50,32 @@ const reviews = [
 
 const About = () => {
   return (
-    <section className="bg-slate-900 text-white">
+    <section id="about" className="bg-slate-900 text-white">
       {/* Intro */}
       <div className="px-16 py-16">
         <h2 className="text-3xl font-bold mb-4">About Us</h2>
         <p className="max-w-3xl text-slate-300">
           HotelLux offers premium hotel booking services with world-class
-          amenities and comfort for your perfect vacation.
+          amenities and comfort for your perfect vacation. From quiet hill
+          resorts in Bandarban to beachfront getaways in Cox's Bazar, we bring
+          together a handpicked collection of hotels across Bangladesh so you
+          never have to compromise on quality, location, or price.
+        </p>
+        <p className="max-w-3xl text-slate-300 mt-4">
+          What started as a simple idea — booking a hotel shouldn't feel
+          complicated or risky — has grown into a platform trusted by
+          hundreds of travelers every month. We personally verify every
+          property listed on HotelLux, work directly with hotel owners to
+          keep prices honest, and support every booking with a real team
+          that's reachable around the clock.
         </p>
         <p className="max-w-3xl text-slate-300 mt-4">
           Our mission is simple: make hotel booking across Bangladesh easy,
           transparent, and reliable, so you can spend less time planning and
-          more time enjoying your trip.
+          more time enjoying your trip. Whether you're travelling for a
+          weekend escape, a family vacation, or business, HotelLux is built
+          to make finding the right room effortless — from the first search
+          to the moment you check in.
         </p>
       </div>
 
