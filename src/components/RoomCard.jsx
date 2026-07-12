@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function RoomCard({ room }) {
   const navigate = useNavigate();
@@ -22,9 +22,16 @@ function RoomCard({ room }) {
           {room.name || "Room Name"}
         </h3>
 
-        <p className="text-slate-400 mb-4">
+        <p className="text-slate-400 mb-1 line-clamp-2">
           {room.description || "Luxury room with modern facilities"}
         </p>
+
+        <Link
+          to={`/rooms/${room.id}`}
+          className="text-yellow-400 text-sm hover:underline mb-4 inline-block"
+        >
+          Read More
+        </Link>
 
         <div className="flex justify-between items-center">
           <span className="text-yellow-400 font-bold text-lg">
